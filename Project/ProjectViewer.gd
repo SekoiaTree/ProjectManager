@@ -20,7 +20,7 @@ func _ready():
 	pass
 
 func save_project(filename : String):
-	if not is_project_open or projectSlot.get_child_count() == 0:
+	if (not is_project_open) or projectSlot.get_child_count() == 0:
 		output_error("Cannot find project to save!")
 	var file = File.new()
 	var json = {}
@@ -94,7 +94,6 @@ func create_new_project():
 	var file = File.new()
 	if not file.file_exists("user://" + addProjectDialogText.text.get_basename() + ".todo"):
 		open_project(addProjectDialogText.text)
-		save_project(addProjectDialogText.text)
 		addProjectDialogText.text = ""
 	else:
 		output_error("Project already exists.")
