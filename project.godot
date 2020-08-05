@@ -15,18 +15,18 @@ _global_script_class_icons={
 
 [application]
 
-config/name="ProjectManager"
+config/name="Sekoia's Project Manager"
+run/main_scene="res://Project/ProjectViewer.tscn"
+boot_splash/bg_color=Color( 0.0235294, 0.160784, 0.2, 1 )
 config/icon="res://icon.png"
-
-[autoload]
-
-UserData="*res://addons/github-integration/scripts/user_data.gd"
-IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
-RestHandler="*res://addons/github-integration/scripts/RestHandler.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "github-integration" )
+enabled=PoolStringArray( "todo" )
+
+[gui]
+
+theme/custom="res://Theme.tres"
 
 [importer_defaults]
 
@@ -56,4 +56,5 @@ texture={
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.0235294, 0.160784, 0.2, 1 )
 environment/default_environment="res://default_env.tres"

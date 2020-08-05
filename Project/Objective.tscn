@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Theme.tres" type="Theme" id=1]
+[ext_resource path="res://Icons/icon_remove.svg" type="Texture" id=2]
+[ext_resource path="res://Icons/icon_arrow_down.svg" type="Texture" id=3]
+[ext_resource path="res://Icons/icon_arrow_up.svg" type="Texture" id=4]
+[ext_resource path="res://Project/Objective.gd" type="Script" id=5]
+[ext_resource path="res://Checkboxes/move.png" type="Texture" id=6]
+[ext_resource path="res://Icons/checked.png" type="Texture" id=7]
+[ext_resource path="res://Icons/unchecked.png" type="Texture" id=8]
+[ext_resource path="res://Fonts/PixelOperator.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Project/Right-click.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 9 )
+
+[node name="Objective" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right-click" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupMenu" type="PopupMenu" parent="Right-click"]
+margin_right = 162.0
+margin_bottom = 99.0
+items = [ "Delete", ExtResource( 2 ), 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 1, 0, null, "", true, "Move to bottom", ExtResource( 3 ), 0, false, false, 2, 0, null, "", false, "Move to top", ExtResource( 4 ), 0, false, false, 3, 0, null, "", false ]
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer3"]
+margin_right = 340.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+custom_constants/separation = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer3/HBoxContainer"]
+margin_right = 169.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureButton2" type="TextureButton" parent="HBoxContainer3/HBoxContainer"]
+margin_left = 171.0
+margin_right = 340.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+toggle_mode = true
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer3"]
+margin_left = 344.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Label" type="Label" parent="HBoxContainer3/HBoxContainer2"]
+margin_right = 680.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+autowrap = true
+[connection signal="index_pressed" from="Right-click/PopupMenu" to="Right-click" method="_on_PopupMenu_index_pressed"]
+[connection signal="toggled" from="HBoxContainer3/HBoxContainer/TextureButton2" to="." method="toggled"]
